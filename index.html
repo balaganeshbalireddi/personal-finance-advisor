@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Finance Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>💰 Personal Finance Tracker</h1>
+    <button id="darkModeToggle">🌙 Dark Mode</button>
+  </header>
+
+  <div class="main">
+    <!-- Left column: Transactions -->
+    <div class="transactions">
+      <div class="balance">
+        <h2>Balance: <span id="balance">₹0</span></h2>
+        <p>Income: <span id="income">₹0</span> | Expense: <span id="expense">₹0</span></p>
+      </div>
+
+      <div class="transaction-form">
+        <input type="text" id="text" placeholder="Enter description">
+        <input type="number" id="amount" placeholder="Enter amount">
+        <input type="text" id="category" placeholder="Enter category (Food, Rent, etc.)">
+        <select id="type">
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+        <button onclick="addTransaction()">Add</button>
+      </div>
+
+      <div class="report-buttons">
+        <button onclick="updateReport('daily')">Daily</button>
+        <button onclick="updateReport('weekly')">Weekly</button>
+        <button onclick="updateReport('monthly')">Monthly</button>
+        <button onclick="updateReport('all')">All</button>
+      </div>
+
+      <ul id="transaction-list"></ul>
+    </div>
+
+    <!-- Right column: Charts -->
+    <div class="charts">
+      <h3>Income / Expense Breakdown</h3>
+      <canvas id="financeChart"></canvas>
+
+      <h3>Income / Expense Trend (Last 30 days)</h3>
+      <canvas id="trendChart"></canvas>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
